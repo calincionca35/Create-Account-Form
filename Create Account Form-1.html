@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--Calin Cionca-->
+<html lang="en-US">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WEBD170-Final-Project</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                background-color: lightgray;
+                font-family: Arial;
+                color: #343d46;
+            }
+            #container {
+                margin: 10px auto;
+                background-color: white;
+                border-radius: 1em 1em 1em 1em;
+                box-shadow: 3px 4px 5px 0px;
+                max-width: 400px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            main {
+                margin: 0 auto;
+            }
+            header {
+                background-color: lightblue;
+                width: 100%;
+                border-radius: 1em 1em 0 0;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+            }
+            #logo {
+                font-weight: bold;
+                width: 75px;
+                height: 75px;
+                text-align: center;
+                padding: 1em 0 0 .5em;
+            }
+            .languageDiv {
+                padding: .75em 1.25em 0 0;
+            }
+            h2 {
+                text-align: center;
+                padding-top: 15px;
+            }
+            .h2WithName {
+                color: green;
+            }
+            form {
+                margin: 1em;
+            }
+            label {
+                font-size: 1em;
+                margin: 4px 0 2px 8px;
+                text-align: left;
+                width: 25%;
+            }
+            input {
+                border: 1.45px solid #ccc;
+                border-radius: 5px;
+                font-size: 1em;
+                font-weight: 500;
+                margin: 2px 0 10px 8px;
+                width: 95%;
+                height: 2.25em;
+                padding-left: 4px;
+                caret-color: limegreen;
+                box-shadow: inset 1px 1px 1px 0px
+            }
+            #firstName_error, #lastName_error, #email_error, #password_error {
+                display: block;
+                color: red;
+                margin-left: .5em;
+                margin-bottom: 8px;
+            }
+            input[type="checkbox"] {
+                height: 1.25em;
+                margin: 0.25em 0 0 1em;
+                width: 1.25em;
+                vertical-align: bottom;
+                box-shadow: 2px 2px 4px 2px #888 inset;
+            }
+            input[type="checkbox"]:hover, input[type="submit"]:hover {
+                cursor: pointer;
+            }
+            input[type="checkbox"]:checked {
+                box-shadow: none;
+            }
+            .submit {
+                border-radius: 8px;
+                box-shadow: 14px 17px 26px -3px #888;
+                font-size: 1.1em;
+                font-weight: bold;
+                height: 2.5em;
+                margin: .5em;
+                width: 95%;
+                align-items: flex-start;
+                background-color: lightseagreen;
+                color: white;
+            }
+            .submit:hover {
+                background-color: lightgreen;
+                color: blue;
+            }
+            .submitWithFirstName {
+                 border-radius: 8px;
+                box-shadow: 14px 17px 26px -3px #888;
+                font-size: 1.1em;
+                font-weight: bold;
+                height: 2.5em;
+                margin: .5em;
+                width: 95%;
+                align-items: flex-start;
+                color: white;
+                background-color: orange;
+            }
+            .submitWithFullName {
+                 border-radius: 8px;
+                box-shadow: 14px 17px 26px -3px #888;
+                font-size: 1.1em;
+                font-weight: bold;
+                height: 2.5em;
+                margin: .5em;
+                width: 95%;
+                align-items: flex-start;
+                color: blue;
+                background-color: yellow;
+            }
+            main p {
+                font-weight: bold;
+                text-align: center;
+                font-size: 15px;
+                margin: .5em 0;
+            }
+            #response {
+                display: none;
+                border: 1px solid black;
+                background-color: aliceblue;
+                margin: 300px auto;
+                max-width: 500px;
+                max-height: 300px;
+                padding: 20px;
+            }
+            footer {
+                height: 64px;
+                background-color: lightblue;
+                width: 100%;
+                border-radius: 0 0 1em 1em;
+            }
+            footer p {
+                font-weight: bold;
+                padding-top: 25px;
+                text-align: center;
+                font-size: .75em;
+            }
+            footer span {
+                margin: 0 3px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+        <header>
+                <div id='logo'>Company Logo</div>
+                <div id="google_translate_element" class="languageDiv"></div>
+            </header>
+            <main>
+            	<h2 id="customizeH2">Create Account</h2>
+                <form name="createAccount" action=" " method="post" class="flex-container" id="accountForm" autocomplete="off">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" title="Please enter your First Name" autofocus required />
+                     <span id="firstName_error" class="error"></span>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" title="Please enter your Last Name" required/>
+                     <span id="lastName_error" class="error"></span>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="me@domain.com" title="Please enter your E-mail" required/>
+                     <span id="email_error" class="error"></span>
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" title="Please create your password" required>
+                     <span id="password_error" class="error"></span>
+
+                    <input type="checkbox" id="showPassword">
+                    <label>Show Password</label>
+
+                    <p>By creating an account you agree to our
+                        <br><a href="#">Terms and Privacy</a>
+                    </p>
+
+                    <input type="submit" id="createAccount" class="submit" value="Create My Account" title="After creating your account activate it by responding to our e-mail">
+                </form>
+            </main>
+
+            <footer>
+                <p>&copy;<span id="copyRightYear"></span>Company Name</p>
+            </footer>
+        </div>
+        <div id="response"></div>
+        <script>
+            /*eslint-env browser*/
+            "use strict";
+             //Global Variables    
+            var firstName, lastName, email, pwrd, pwrdRegex, isValid=true;
+
+             //Helper Function
+            var $ = function(id) {
+                return document.getElementById(id);
+            };
+
+             //First Name Validation
+            $("firstName").addEventListener('blur', function() {
+                firstName = $("firstName").value;
+                if (firstName.length < 1) {
+                    $("firstName_error").innerHTML = "Please enter your first name";
+                    $("firstName").focus();
+                } else {
+                    sessionStorage.setItem("firstName", firstName);
+                    $("firstName_error").innerHTML = "";
+                    $("createAccount").classList.remove("submit");
+                    $("createAccount").classList.add("submitWithFirstName");
+                    $("customizeH2").classList.add("h2WithName");
+                    if (firstName.charAt(firstName.length - 1) === "s") {
+                        $("createAccount").value = "Create " + firstName + "\' Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + "\' Account";
+                    } else {
+                        $("createAccount").value = "Create " + firstName + "\'s Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + "\'s Account";
+                    }
+                }
+                isValid = false;
+            });
+
+             //Last Name Validation    
+            $("lastName").addEventListener('blur', function() {
+                "use strict";
+                firstName = $("firstName").value;
+                lastName = $("lastName").value;
+                if (lastName.length < 1) {
+                    $("lastName_error").innerHTML = "Please enter your last name";
+                    $("lastName").focus();
+                } else {
+                    sessionStorage.setItem("lastName", lastName);
+                    $("lastName_error").innerHTML = "";
+                    $("createAccount").classList.remove("submitWithFirstName");
+                    $("createAccount").classList.add("submitWithFullName");
+                    if (lastName.charAt(lastName.length - 1) === "s") {
+                        $("createAccount").value = "Create " + firstName + " " + lastName + "\' Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + " " + lastName + "\' Account";
+                    } else {
+                        $("createAccount").value = "Create " + firstName + " " + lastName + "\'s Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + " " + lastName + "\'s Account";
+                    }
+                }
+                isValid = false;
+            });
+
+             //E-mail Validation
+            $("email").addEventListener('blur', function() {
+                email = $("email").value;
+                sessionStorage.setItem("email", email);
+                console.log(sessionStorage.getItem("email"));                
+                if(email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+                    $("email_error").innerHTML = "Please enter a valid e-mail address";
+                    $("email").focus();
+                } else {
+                    $("email_error").innerHTML = "";
+                }
+                isValid = false;
+            });
+
+             //Password Validation
+            $("password").addEventListener('blur', function() {
+                pwrd = $("password").value;
+                //Password must contain 1 lowercase alphabetical character, 1 uppercase alphabetical character, 1 numeric character, and be a minimum of 8 characters long
+                pwrdRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+                if (pwrd.length < 1) {
+                    $("password_error").innerHTML = "Please create your password";
+                    $("password").focus();
+                }
+                if (!pwrdRegex.test(pwrd)) {
+                    $("password_error").innerHTML = "Password must contain 1 lowercase alphabetical character, 1 uppercase alphabetical character, 1 numeric character, and be a minimum of 8 characters long";
+                    $("password").focus();
+                } else {
+                    $("password_error").innerHTML = "";
+                }
+                isValid = false;
+            });
+            
+            //Customize H2 and Submit button from sessionStorage on browser reload 
+            $("password").addEventListener('click', function() {
+                if (sessionStorage.getItem("lastName") !== null) {
+                    $("createAccount").classList.add("submitWithFullName");
+                    $("customizeH2").classList.add("h2WithName");
+                    lastName = sessionStorage.getItem("lastName");
+                    if (lastName.charAt(lastName.length - 1) === "s") {
+                        $("createAccount").value = "Create " + firstName + " " + lastName + "\' Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + " " + lastName + "\' Account";
+                    } else {
+                        $("createAccount").value = "Create " + firstName + " " + lastName + "\'s Account";
+                        $("customizeH2").innerHTML = "Create " + firstName + " " + lastName + "\'s Account";
+                    }
+                }
+                isValid = false;
+            });
+
+             //Show Password Checkbox
+            $("showPassword").addEventListener("change", function() {
+                if ($("password").type === "password") {
+                    $("password").type = "text";
+                } else if ($("password").type !== "password") {
+                    $("password").type = "password";
+                }
+                isValid = false;
+            });
+
+             //Create My Account Button & Disable the button after submission
+            $("createAccount").addEventListener("click", function() {
+                firstName = $("firstName").value;
+                lastName = $("lastName").value;
+                email = $("email").value;
+                $("createAccount").disabled = true; //disables the button after submission
+                $("container").style.display = "none"; //hides form to display response
+                $("response").style.display = "block"; //displays div with response
+                $("response").innerHTML = "Congratulations " + firstName + " " + lastName + ", your account has been created!\nPlease respond to the e-mail we just sent you at " + email + " to activate your account."; //provides follow-up message to user after submitting form
+                setInterval(function () {$("response").style.display = "none"; $("container").style.display = "block"}, 5000);  //sets duration for displaying response to user before showing original form
+                //Subsequent code resets form styling to default styles
+                $("customizeH2").innerHTML = "Create Account";
+                $("customizeH2").classList.remove("h2WithName");
+                $("createAccount").classList.remove("submitWithFullName");            
+                $("createAccount").classList.add("submit");
+                $("createAccount").value = "Create My Account";
+                document.getElementsByName('createAccount')[0].reset();
+                isValid = false;
+            });
+
+            //Autofill First Name, Last Name, and E-mail from SessionStorage on browser relaod
+            window.addEventListener('load', function () {
+                if (sessionStorage.length > 0) {
+                    $("firstName").value = sessionStorage.getItem("firstName");
+                    $("lastName").value = sessionStorage.getItem("lastName");
+                    $("email").value = sessionStorage.getItem("email");
+                    
+                }
+            })        
+            
+             //Footer Copyright Year
+            $("copyRightYear").innerHTML = new Date().getFullYear();
+        </script>
+        
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+
+<!--The source for the following Google Translate API scripts is: https://www.w3schools.com/howto/howto_google_translate.asp-->
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    </body>
+
+</html>
